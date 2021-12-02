@@ -20,6 +20,8 @@ module "recommenders" {
 ## Supported Recommender
 - `google.compute.instance.IdleResourceRecommender`
 
+If there is a demand for other recommenders, I might support them...
+
 ## Input Variables
 | Name                        | Description                                 | Type   | Default           | Required |
 |:----------------------------|:--------------------------------------------|:-------|:------------------|:---------|
