@@ -1,0 +1,2 @@
+google-cloud-asset==3.7.1
+google-cloud-recommender==2.5.1
