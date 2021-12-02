@@ -2,6 +2,9 @@ resource "google_service_account" "recommender_service_account" {
   project      = var.gcp_project
   account_id   = "recommender-checker"
   display_name = "Service Account For Recommender"
+  depends_on = [
+    google_project_service.recommender_service
+  ]
 }
 
 resource "google_organization_iam_member" "recommender_iam_member_cloudasset" {
@@ -20,6 +23,9 @@ resource "google_organization_iam_member" "recommender_iam_member_suggestion" {
 resource "google_pubsub_topic" "recommender_checker_topic" {
   project = var.gcp_project
   name    = "recommender-checker"
+  depends_on = [
+    google_project_service.recommender_service
+  ]
 }
 
 data "archive_file" "recommender_checker_archive" {
