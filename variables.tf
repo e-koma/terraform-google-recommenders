@@ -11,7 +11,7 @@ variable "gcp_project" {
 variable "gcp_region" {
   type        = string
   default     = "asia-northeast1"
-  description = "OPTIONAL"
+  description = "OPTIONAL: GCP Region to deploy"
 }
 
 variable "bucket_name" {
