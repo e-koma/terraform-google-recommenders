@@ -6,7 +6,15 @@ Organization Admin permission (`roles/resourcemanager.organizationAdmin`) is req
 
 ## Usage
 ```hcl
+module "recommenders" {
+  source  = "e-koma/recommenders/google"
+  version = "0.0.1"
 
+  organization_id   = "****"
+  gcp_project       = "****"
+  bucket_name       = "****" # GCS bucket to manage Cloud Function codes
+  slack_webhook_url = "****" # Slack Webhook URL to notify results
+}
 ```
 
 ## Supported Recommender
