@@ -30,8 +30,8 @@ resource "google_pubsub_topic" "recommender_checker_topic" {
 
 data "archive_file" "recommender_checker_archive" {
   type        = "zip"
-  source_dir  = "./scripts/cloudfunctions/recommender-checker"
-  output_path = "./scripts/cloudfunctions/recommender-checker.zip"
+  source_dir  = "${path.module}/scripts/cloudfunctions/recommender-checker"
+  output_path = "${path.module}/scripts/cloudfunctions/recommender-checker.zip"
 }
 
 resource "google_storage_bucket_object" "recommender_checker_object" {
