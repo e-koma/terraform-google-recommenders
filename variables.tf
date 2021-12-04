@@ -39,5 +39,11 @@ variable "job_timezone" {
 variable "idle_vm_recommender_enabled" {
   type        = string
   default     = "true"
-  description = "OPTIONAL: Option to enable Recommender"
+  description = "OPTIONAL: Option to enable Idle VM Recommender"
+}
+
+variable "idle_sql_recommender_enabled" {
+  type        = string
+  default     = "false"
+  description = "OPTIONAL: Option to enable Idle SQL Recommender"
 }

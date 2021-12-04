@@ -4,8 +4,7 @@ from proto.marshal.collections.repeated import RepeatedComposite
 from typing import List
 from ..recommender import Recommender
 
-
-class InstanceIdleResourceRecommender(Recommender):
+class VMIdleResourceRecommender(Recommender):
     def __init__(self):
         recommender_id = 'google.compute.instance.IdleResourceRecommender'
         asset_type = 'compute.googleapis.com/Instance'
@@ -14,7 +13,7 @@ class InstanceIdleResourceRecommender(Recommender):
     def detect(self) -> None:
         project_identifiers_map = self._group_by_projects(self._list_assets())
         for project, properties in project_identifiers_map.items():
-            print(f'check {project} recommendation')
+            print(f'check {project} compute instance idle recommendation')
             for zone in properties["zones"]:
                 recommendations = self._list_recommendations(properties['project_number'], zone)
                 if not recommendations:
