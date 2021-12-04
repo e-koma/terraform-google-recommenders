@@ -8,7 +8,7 @@ Organization Admin permission (`roles/resourcemanager.organizationAdmin`) is req
 ```hcl
 module "recommenders" {
   source  = "e-koma/recommenders/google"
-  version = "0.0.1"
+  version = "0.0.2"
 
   organization_id   = "****"
   gcp_project       = "****"
@@ -19,8 +19,7 @@ module "recommenders" {
 
 ## Supported Recommender
 - `google.compute.instance.IdleResourceRecommender`
-
-If there is a demand for other recommenders, I might support them...
+- `google.cloudsql.instance.IdleRecommender`
 
 ## Input Variables
 | Name                          | Description                                 | Type   | Default           | Required |
