@@ -19,7 +19,7 @@ class Recommender():
         self.asset_type = asset_type
         self.ignore_descriptions = ignore_descriptions
 
-    def _list_assets(self):
+    def _search_assets(self):
         raise NotImplementedError
 
     def _list_recommendations(self):
