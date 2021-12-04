@@ -7,17 +7,18 @@ resource "google_service_account" "recommender_service_account" {
   ]
 }
 
-resource "google_organization_iam_member" "recommender_iam_member_cloudasset" {
-  org_id = var.organization_id
-  role   = "roles/cloudasset.viewer"
-  member = "serviceAccount:${google_service_account.recommender_service_account.email}"
+locals {
+  permissions = toset([
+    "roles/cloudasset.viewer",
+    "roles/recommender.computeViewer",
+  ])
 }
 
-# NOTE: Recommenderの種類が増やす場合、対応するrecommender roleを付与する
-resource "google_organization_iam_member" "recommender_iam_member_suggestion" {
-  org_id = var.organization_id
-  role   = "roles/recommender.computeViewer"
-  member = "serviceAccount:${google_service_account.recommender_service_account.email}"
+resource "google_organization_iam_member" "recommender_iam_members" {
+  for_each = local.permissions
+  org_id   = var.organization_id
+  role     = each.value
+  member   = "serviceAccount:${google_service_account.recommender_service_account.email}"
 }
 
 resource "google_pubsub_topic" "recommender_checker_topic" {
