@@ -11,6 +11,7 @@ locals {
   permissions = toset([
     "roles/cloudasset.viewer",
     "roles/recommender.computeViewer",
+    "roles/recommender.cloudsqlViewer",
   ])
 }
 
@@ -63,9 +64,10 @@ resource "google_cloudfunctions_function" "recommender_checker_func" {
   }
 
   environment_variables = {
-    ORGANIZATION_ID             = var.organization_id
-    SLACK_HOOK_URL              = var.slack_webhook_url
-    IDLE_VM_RECOMMENDER_ENABLED = var.idle_vm_recommender_enabled
+    ORGANIZATION_ID              = var.organization_id
+    SLACK_HOOK_URL               = var.slack_webhook_url
+    IDLE_VM_RECOMMENDER_ENABLED  = var.idle_vm_recommender_enabled
+    IDLE_SQL_RECOMMENDER_ENABLED = var.idle_sql_recommender_enabled
   }
   service_account_email = google_service_account.recommender_service_account.email
 }
